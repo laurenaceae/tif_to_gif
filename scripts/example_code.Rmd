@@ -15,18 +15,18 @@ library(here)
 library(purrr)
 
 # import the function 
-source(here("tif_to_gif.R"))
+source(here("scripts", "tif_to_gif.R"))
 ```
 
 ```{r}
 # example for a single species
-tif_to_gif(prefix = "adenfasc", output_name = "test", output_location = here("data", "data_output"), frames_per_sec = 1, path_to_folder = here("data", "data_adenfasc_gif"))
+tif_to_gif(prefix = "adenfasc", output_name = "landis", output_location = here("data", "output_data"), frames_per_sec = 1, path_to_folder = here("data"))
 ```
 
 ```{r}
 # example for multiple species
 species_list <- c("adenfasc", "ceanramu")
-pmap(list(prefix = species_list), output_location = here("data", "data_output"), tif_to_gif, output_name = "test", frames_per_sec = 1, path_to_folder = here("data", "data_adenfasc_gif"))
 
+pmap(list(prefix = species_list), output_location = here("data", "output_data"), tif_to_gif, output_name = "landis", frames_per_sec = 1, path_to_folder = here("data"))
 ```
 

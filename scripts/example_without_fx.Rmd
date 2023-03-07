@@ -25,6 +25,7 @@ prefix <- "adenfasc"
 output_name <- "landis"
 path_to_folder <- here("data")
 output_location <- here("data", "output_data")
+frames_per_sec <- 1
 ```
 
 Run code
