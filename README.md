@@ -11,4 +11,4 @@ This code can be used to transform TIFF files into animated GIF files. It uses t
 ### Data Files:
 
 - **adenfasc-X.tif** - 5 TIFF files as example data for the species Adenostoma fasciculatum
-- **ceanramu-x.tif** - 5 TIFF files as example data for the species Ceanothus cuneatus var. fascicularis
+- **ceanramu-X.tif** - 5 TIFF files as example data for the species Ceanothus cuneatus var. fascicularis
