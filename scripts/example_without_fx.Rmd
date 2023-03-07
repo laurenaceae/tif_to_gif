@@ -1,0 +1,55 @@
+---
+title: "example_without_fx"
+author: "Lauren Harris"
+date: "3/7/2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(sp)
+library(raster)
+library(gtools)
+library(here)
+library(raster)
+library(tmap)
+library(purrr)
+```
+
+Settings
+```{r}
+prefix <- "adenfasc"
+output_name <- "landis"
+path_to_folder <- here("data")
+output_location <- here("data", "output_data")
+```
+
+Run code
+```{r}
+# look for specific files
+pattern_here <- c(paste0(prefix,"."), '.tif$')
+tif_list <- gtools::mixedsort(list.files(path = path_to_folder, pattern=pattern_here, all.files = TRUE, full.names = TRUE,), decreasing = TRUE)
+
+# convert all to raster
+lapply(tif_list, raster)
+
+# stack and brick the tifs
+all_tifs <- raster::stack(tif_list)
+b_tifs <- raster::brick(all_tifs)
+
+# animate the tifs
+anim <- tmap::tm_shape(b_tifs) + tmap::tm_raster() + tmap::tm_facets(nrow = 1, ncol = 1)
+```
+
+Export gif
+```{r}
+# name your file
+output_file_name <- paste0(output_name, "_", prefix, ".gif")
+
+# export
+tmap_animation(anim, fps = frames_per_sec, filename = paste0(output_location, "/", output_file_name))
+```
+

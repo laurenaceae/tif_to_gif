@@ -1,0 +1,32 @@
+---
+title: "example_code"
+author: "Lauren Harris"
+date: "3/7/2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#required packages
+library(here)
+library(purrr)
+
+# import the function 
+source(here("tif_to_gif.R"))
+```
+
+```{r}
+# example for a single species
+tif_to_gif(prefix = "adenfasc", output_name = "test", output_location = here("data", "data_output"), frames_per_sec = 1, path_to_folder = here("data", "data_adenfasc_gif"))
+```
+
+```{r}
+# example for multiple species
+species_list <- c("adenfasc", "ceanramu")
+pmap(list(prefix = species_list), output_location = here("data", "data_output"), tif_to_gif, output_name = "test", frames_per_sec = 1, path_to_folder = here("data", "data_adenfasc_gif"))
+
+```
+
