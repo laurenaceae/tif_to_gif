@@ -1,6 +1,6 @@
 # tif_to_gif
 
-This code can be used to transform TIFF files into animated GIF files. It uses the tmap and gifski packages, but the function encoded here makes those functions more user friendly. This code makes it easier to select specific files in a folder of mixed files. It also allows for the user to generate more than one GIF at a time, so long as all the initial TIFF files are located in the same folder. 
+This code can be used to transform TIF files into animated GIF files. It mainly uses the tmap and gifski packages, but the function encoded here makes those functions more user friendly. This code makes it easier to select specific files in a folder of mixed files. It also allows for the user to generate more than one GIF at a time, so long as all the initial TIFF files are located in the same folder. 
 
 ### Script Files:
 
@@ -24,4 +24,5 @@ This code can be used to transform TIFF files into animated GIF files. It uses t
 - `purrr` - Useful for running the function for more than one species/prefix at a time (purrr:pmap)
 
 Author: Lauren Harris
+
 With thanks to: Frank Davis
