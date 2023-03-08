@@ -4,7 +4,7 @@
 #' @param path_to_folder = the location of all tiff files, is required
 #' @param output_name = the name of the output file will be: output_name + _ + prefix (if present) + .gif, is required
 #' @param output_location = the file path to place the gif in (compatible with here), is required  
-#' @return GIF file made from you TIF files
+#' @return GIF file made from TIF files
 #' @author Lauren Harris
 library(sp)
 library(raster)
