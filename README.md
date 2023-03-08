@@ -22,6 +22,7 @@ This code can be used to transform TIF files into animated GIF files. It mainly 
 - `gtools` - Required to import specific files (gtools::mixedsort)
 - `here` - Useful for specifying file locations relative to Rproj
 - `purrr` - Useful for running the function for more than one species/prefix at a time (purrr:pmap)
+- `RColorBrewer` - Provides color palettes compatible with the function
 
 Author: Lauren Harris
 

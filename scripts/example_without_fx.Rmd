@@ -16,6 +16,7 @@ library(here)
 library(raster)
 library(tmap)
 library(purrr)
+library(RColorBrewer)
 ```
 
 Settings
@@ -30,6 +31,8 @@ path_to_folder <- here("data")
 output_location <- here("data", "output_data")
 # speed of GIF (in frames per second)
 frames_per_sec <- 1
+# color palette of GIF
+my_colors <- "Purples"
 ```
 
 Run code
@@ -47,7 +50,7 @@ all_tifs <- raster::stack(tif_list)
 b_tifs <- raster::brick(all_tifs)
 
 # animate the TIFs
-anim <- tmap::tm_shape(b_tifs) + tmap::tm_raster() + tmap::tm_facets(nrow = 1, ncol = 1)
+anim <- tmap::tm_shape(b_tifs) + tmap::tm_raster(palette = my_colors) + tmap::tm_facets(nrow = 1, ncol = 1)
 ```
 
 Export gif

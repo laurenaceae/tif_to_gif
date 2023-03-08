@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 # required packages
 library(here)
 library(purrr)
+library(RColorBrewer)
 
 # import the function 
 source(here("scripts", "tif_to_gif.R"))
@@ -20,7 +21,7 @@ source(here("scripts", "tif_to_gif.R"))
 
 ```{r}
 # example for a single species
-tif_to_gif(prefix = "adenfasc", output_name = "landis", output_location = here("data", "output_data"), frames_per_sec = 1, path_to_folder = here("data"))
+tif_to_gif(prefix = "adenfasc", output_name = "landis", output_location = here("data", "output_data"), frames_per_sec = 1, path_to_folder = here("data"), colors = "Greens")
 ```
 
 ```{r}
@@ -30,6 +31,6 @@ tif_to_gif(prefix = "adenfasc", output_name = "landis", output_location = here("
 species_list <- c("adenfasc", "ceanramu")
 
 # run for list of species
-pmap(list(prefix = species_list), output_location = here("data", "output_data"), tif_to_gif, output_name = "landis", frames_per_sec = 1, path_to_folder = here("data"))
+pmap(list(prefix = species_list), output_location = here("data", "output_data"), tif_to_gif, output_name = "landis", frames_per_sec = 1, path_to_folder = here("data"), colors = "Greens")
 ```
 
