@@ -5,7 +5,7 @@
 #' @param output_name = the name of the output file will be: output_name + _ + prefix (if present) + .gif, is required
 #' @param output_location = the file path to place the gif in (compatible with here), is required  
 #' @param colors = the color palette for your GIF
-#' @return GIF file made from you TIF files
+#' @return GIF file made from your TIF files
 #' @author Lauren Harris
 library(raster)
 library(gtools)
