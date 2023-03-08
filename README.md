@@ -13,3 +13,15 @@ This code can be used to transform TIFF files into animated GIF files. It uses t
 - `adenfasc-X.tif` - 5 TIFF files as example data for the species Adenostoma fasciculatum
 - `ceanramu-X.tif` - 5 TIFF files as example data for the species Ceanothus cuneatus var. fascicularis
 - `landis_adenfasc.gif` - An example output, and placeholder to make sure the output_data folder exists
+
+### Required/Recommended Packages:
+
+- `tmap` - Required to make the animation
+- `gifski` - Required for tmap, which is dependent on this package for creating GIFs
+- `raster` - Required for the processing of raster data
+- `gtools` - Required to import specific files (gtools::mixedsort)
+- `here` - Useful for specifying file locations relative to Rproj
+- `purrr` - Useful for running the function for more than one species/prefix at a time (purrr:pmap)
+
+Author: Lauren Harris
+With thanks to: Frank Davis

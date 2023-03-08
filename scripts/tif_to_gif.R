@@ -6,7 +6,6 @@
 #' @param output_location = the file path to place the gif in (compatible with here), is required  
 #' @return GIF file made from you TIF files
 #' @author Lauren Harris
-library(sp)
 library(raster)
 library(gtools)
 library(here)
