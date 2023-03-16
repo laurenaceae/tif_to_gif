@@ -38,9 +38,10 @@ my_colors <- "Purples"
 Run code
 ```{r}
 # find files that start with the prefix and end with .tif
-pattern_here <- c(paste0(prefix,"."), '.tif$')
+pattern_here <- c(paste0(prefix, ".*", ".tif$"))
+
 # read in the file paths
-tif_list <- gtools::mixedsort(list.files(path = path_to_folder, pattern=pattern_here, all.files = TRUE, full.names = TRUE,), decreasing = TRUE)
+tif_list <- gtools::mixedsort(list.files(path = here("data"), pattern=pattern_here, all.files = TRUE, full.names = TRUE,), decreasing = TRUE)
 
 # convert all to raster
 lapply(tif_list, raster)

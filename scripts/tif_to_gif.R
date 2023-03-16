@@ -12,15 +12,20 @@ library(gtools)
 library(here)
 library(raster)
 library(tmap)
-tif_to_gif <- function(prefix, frames_per_sec = 1, path_to_folder, output_location, output_name, colors = "Purples"){
-  if(missing(prefix)){pattern_here = '.tif$'}
-  else{pattern_here = c(paste0(prefix,"."), '.tif$')}
+library(gifski)
+tif_to_gif <- function(prefix, suffix, frames_per_sec = 1, path_to_folder, output_location, output_name, colors = "Purples"){
+  if(missing(prefix) & missing(suffix)){pattern_here = '.tif$'}
+  if(missing(prefix)){pattern_here = paste0(".*", suffix, "\\.tif$")}
+  if(missing(suffix)){pattern_here = c(paste0(prefix,".*", ".tif$"))}
+  else{pattern_here = c(paste0(prefix,".*", suffix, "\\.tif$"))}
   tif_list <- gtools::mixedsort(list.files(path = path_to_folder, pattern=pattern_here, all.files=TRUE, full.names=TRUE,),decreasing = TRUE)
   lapply(tif_list,raster)
   all_tifs <- raster::stack(tif_list)
   b_tifs <- raster::brick(all_tifs)
   anim <- tmap::tm_shape(b_tifs) + tmap::tm_raster(palette = colors) + tmap::tm_facets(nrow = 1, ncol = 1)
-  if(missing(prefix)){output_file_name <- paste0(output_name, ".gif")}
-  else{output_file_name <- paste0(output_name, "_", prefix, ".gif")}
+  if(missing(prefix)){output_file_name <- paste0(output_name, "_", suffix, ".gif")}
+  if(missing(suffix)){output_file_name <- paste0(output_name, "_", prefix, ".gif")}
+  if(missing(prefix) & missing(suffix)){output_file_name <- paste0(output_name, "_", prefix, "_", suffix, ".gif")}
+  else{output_file_name <- paste0(output_name, "_", prefix, "_", suffix, ".gif")}
   tmap_animation(anim, fps = frames_per_sec, filename = paste0(output_location, "/", output_file_name))
 }

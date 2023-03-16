@@ -14,6 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 library(here)
 library(purrr)
 library(RColorBrewer)
+library(tidyverse)
 
 # import the function 
 source(here("scripts", "tif_to_gif.R"))
@@ -27,10 +28,21 @@ tif_to_gif(prefix = "adenfasc", output_name = "landis", output_location = here("
 ```{r}
 # example for multiple species
 
-# define species of interest
+# file path 
+my_path <- here("data")
+# yours might look something like this on the bren computers: "H:/ESM215/ex7/landis_II/burtonmesa/modern-fire/output/max-spp-age/"
+
+# define species and scenarios of interest
 species_list <- c("adenfasc", "ceanramu")
+firescenarios <- c("lowlow", "lowhigh", "highlow", "highhigh")
 
 # run for list of species
-pmap(list(prefix = species_list), output_location = here("data", "output_data"), tif_to_gif, output_name = "landis", frames_per_sec = 1, path_to_folder = here("data"), colors = "Greens")
+pmap(list(prefix = species_list), output_location = here("data", "output_data"), .f = tif_to_gif, output_name = "landismodernfire", frames_per_sec = 1, path_to_folder = my_path, colors = "Greens", list(suffix = firescenarios))
+
+# run for list of fire scenarios
+pmap(prefix = "ceanramu", output_location = here("data", "output_data"), .f = tif_to_gif, output_name = "landismodernfire", frames_per_sec = 1, path_to_folder = my_path, colors = "Greens", list(suffix = firescenarios))
+
+# run for fire severity
+pmap(prefix = "severity", output_location = here("data", "output_data"), .f = tif_to_gif, output_name = "landismodernfire", frames_per_sec = 1, path_to_folder = my_path, colors = "Greens", list(suffix = firescenarios))
 ```
 
